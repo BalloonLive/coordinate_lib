@@ -13,6 +13,9 @@ namespace CoordinateLib.CoordSystems
         public CoordDattransParams CoordDattransParams { get; set; }
         public CoordTmPartialParams CoordTmPartialParams { get; set; }
         public CoordDatumParams CoordDatumParams { get; set; }
+        public string DatumName { get; set; }
+        public string DatumParamLine { get; set; }
+        public string GridSysParamLine { get; set; }
 
         #region comparison implementation
         public override bool Equals(object obj)
@@ -46,6 +49,63 @@ namespace CoordinateLib.CoordSystems
             return (this.Name == p.Name) && (this.Version == p.Version) && (this.Format == p.Format);
         }
 
+        public string GetGridSysParam()
+        {
+            if (this.GridSysParamLine != "")
+                return this.GridSysParamLine;
+            if ( this.CoordTmPartialParams != null)
+                return this.CoordTmPartialParams.ToString();
+            else
+                return "";
+        }
+
+        public string GetDatumParam()
+        {
+            if (this.DatumParamLine != "")
+                return this.DatumParamLine;
+            if (this.CoordDattransParams != null)
+                return this.CoordDattransParams.ToString() + "," + this.DatumName;
+            else
+                return this.DatumName;
+        }
+
+        public string Line1Header
+        {
+            get
+            {
+                switch (this.GridSys)
+                {
+                    case GridSys.LATLONG:
+                        return "Latitude";
+                    case GridSys.BNG:
+                    case GridSys.SWISS:
+                    case GridSys.UTM:
+                    case GridSys.USER_TM:
+                        return "Easting";
+                    default:
+                        return "Position";
+                }
+            }
+        }
+
+        public string Line2Header
+        {
+            get
+            {
+                switch (this.GridSys)
+                {
+                    case GridSys.LATLONG:
+                        return "Longitude";
+                    case GridSys.BNG:
+                    case GridSys.SWISS:
+                    case GridSys.UTM:
+                    case GridSys.USER_TM:
+                        return "Northing";
+                    default:
+                        return "";
+                }
+            }
+        }
         public static bool operator ==(CoordSystem lhs, CoordSystem rhs)
         {
             // Check for null on left side.
@@ -72,6 +132,22 @@ namespace CoordinateLib.CoordSystems
         public override int GetHashCode()
         {
             return this.Name.GetHashCode() * 0x00010000 + this.Version?.GetHashCode() ?? 0 + this.Format?.GetHashCode() ?? 0;
+        }
+
+        public static CoordSystem CreateUtmWGS84()
+        {
+            CoordSystem cs = new CoordSystem();
+            cs.Name = "UTM WGS84";
+            cs.DatumName = "WGS84";
+            cs.GridSys = GridSys.UTM;
+            cs.CoordDatumParams = new CoordDatumParams();
+
+            return cs;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
         #endregion
     }

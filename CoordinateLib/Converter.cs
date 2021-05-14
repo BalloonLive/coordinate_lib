@@ -11,23 +11,32 @@ namespace CoordinateLib
         private IConverter _converter = null;
         private static object _sync = new object();
 
-        public CoordinatesData Convert(double latitude, double longitude, CoordSystem coordSystem)
+        public Converter()
+        {
+        }
+
+        public Converter(CoordSystem coordSystem) 
+        {
+            GetConverter(coordSystem);
+        }
+
+        public CoordinatesData Convert(double latitude, double longitude, CoordSystem coordSystem = null, bool is_valid = true)
         {
             lock (_sync)
             {
-                return GetConverter(coordSystem).Convert(latitude, longitude, 0);
+                return GetConverter(coordSystem).Convert(latitude, longitude, 0, is_valid);
             }
         }
 
-        public CoordinatesData Convert(double latitude, double longitude, double altitude, CoordSystem coordSystem)
+        public CoordinatesData Convert(double latitude, double longitude, double altitude, CoordSystem coordSystem = null, bool is_valid = true)
         {
             lock (_sync)
             {
-                return GetConverter(coordSystem).Convert(latitude, longitude, altitude);
+                return GetConverter(coordSystem).Convert(latitude, longitude, altitude, is_valid);
             }
         }
 
-        public CoordinatesNumericData ConvertNumeric(double latitude, double longitude, CoordSystem coordSystem)
+        public CoordinatesNumericData ConvertNumeric(double latitude, double longitude, CoordSystem coordSystem = null)
         {
             lock (_sync)
             {
@@ -35,7 +44,7 @@ namespace CoordinateLib
             }
         }
 
-        public CoordinatesNumericData ConvertNumeric(double latitude, double longitude, double altitude, CoordSystem coordSystem)
+        public CoordinatesNumericData ConvertNumeric(double latitude, double longitude, double altitude, CoordSystem coordSystem = null)
         {
             lock (_sync)
             {
@@ -45,7 +54,7 @@ namespace CoordinateLib
 
         private IConverter GetConverter(CoordSystem coordSystem)
         {
-            if (coordSystem != _selectedCoordSystem || _converter == null)
+            if (coordSystem != null && (coordSystem != _selectedCoordSystem || _converter == null))
             {
                 _selectedCoordSystem = coordSystem;
 
@@ -77,6 +86,10 @@ namespace CoordinateLib
                         throw new IndexOutOfRangeException($"Coordinate system not supported ({coordSystem.Name})");
                 }
             }
+            if ( _converter == null )
+            {
+                throw new ArgumentException("Coordinate system missing");
+            }
 
             return _converter;
         }
@@ -87,6 +100,17 @@ namespace CoordinateLib
         public string Zone { get; set; }
         public string Line1 { get; set; }
         public string Line2 { get; set; }
+
+        public string ZoneLine1
+        {
+            get
+            {
+                if (this.Zone != "")
+                    return this.Zone + " " + this.Line1;
+                else
+                    return this.Line1;
+            }
+        }
     }
 
     public struct CoordinatesNumericData

@@ -18,8 +18,11 @@ namespace CoordinateLib.Converters
         private readonly Params.CoordDatumParams coordDatumParamsWgs84;
         private readonly Params.CoordTmParams coordTmParams;
 
-        CoordinatesData IConverter.Convert(double latitude, double longitude, double altitude = 0)
+        CoordinatesData IConverter.Convert(double latitude, double longitude, double altitude = 0, bool is_valid = true)
         {
+            if ( !is_valid )
+                return new CoordinatesData { Zone = "", Line1 = "N00000000", Line2 = "E00000000"};
+            
             var coords = Convert(latitude, longitude, altitude);
             return new CoordinatesData { Zone = "", Line1 = $"{coords.EastWestHemisphere} {((long)coords.EastWestCoordinate).ToString("00000000")}", Line2 = $"{coords.NorthSouthHemisphere} {((long)coords.NorthSouthCoordinate).ToString("00000000")}" };
         }

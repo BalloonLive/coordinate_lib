@@ -5,7 +5,7 @@ namespace CoordinateLib.Converters
 {
     public class Passthrough : IConverter
     {
-        public CoordinatesData Convert(double latitude, double longitude, double altitude = 0)
+        public CoordinatesData Convert(double latitude, double longitude, double altitude = 0, bool is_valid = true)
         {
             return new CoordinatesData()
             {

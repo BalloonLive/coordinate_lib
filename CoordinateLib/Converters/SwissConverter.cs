@@ -8,8 +8,11 @@ namespace CoordinateLib.Converters
         {
         }
 
-        CoordinatesData IConverter.Convert(double latitude, double longitude, double altitude = 0)
+        CoordinatesData IConverter.Convert(double latitude, double longitude, double altitude = 0, bool is_valid = true)
         {
+            if (!is_valid)
+                return new CoordinatesData { Zone = "", Line1 = "000000", Line2 = "000000" };
+
             var coords = Convert(latitude, longitude, altitude);
 
             string text_northing = "";

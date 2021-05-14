@@ -8,17 +8,21 @@ using static CoordinateLib.Core.Params;
 
 namespace CoordinateLib.CoordSystems
 {
+    public class CoordSystemDirectory : List<CoordSystem>
+    {
+        public string Version { get; set; }
+    }
     public class CoordSystemsParser
     {
-        public List<CoordSystem> Parse(string fileName = "CoordSystems.xml")
+        public CoordSystemDirectory Parse(string fileName = "CoordSystems.xml")
         {
             FileStream fs = new FileStream(fileName, FileMode.Open);
             return Parse(fs);
         }
 
-        public List<CoordSystem> Parse(Stream stream)
+        public CoordSystemDirectory Parse(Stream stream)
         {
-            var coordSystems = new List<CoordSystem>();
+            var coordSystems = new CoordSystemDirectory();
 
             XmlSerializer serializer = new XmlSerializer(typeof(XmlModel));
             var xmlModel = (XmlModel)serializer.Deserialize(stream);
@@ -29,6 +33,7 @@ namespace CoordinateLib.CoordSystems
                     gridSys: coordData.GridSys, gridSysParam: coordData.GridSysParam, datumParam: coordData.DatumParam));
             }
 
+            coordSystems.Version = xmlModel.Version;
 
             return coordSystems;
         }
@@ -42,12 +47,15 @@ namespace CoordinateLib.CoordSystems
             coordSystem.Format = format;
             coordSystem.Version = version;
             coordSystem.GridSys = (GridSys)Enum.Parse(typeof(GridSys), gridSys);
+            coordSystem.DatumParamLine = "";
+            coordSystem.GridSysParamLine = "";
 
             #region parse datum params
             if (!string.IsNullOrEmpty(datumParam))
             {
+                coordSystem.DatumParamLine = datumParam;
                 var split = datumParam.Split(',');
-                if (split.Length >= 9)
+                if (split.Length >= 10)
                 {
                     //double dXp, double dYp, double dZp, double d_ap, double d_fp, double rxp, double ryp, double rzp, double s1p
                     coordSystem.CoordDattransParams = new CoordDattransParams
@@ -62,6 +70,7 @@ namespace CoordinateLib.CoordSystems
                         rzp: double.Parse(split[7], provider),
                         s1p: double.Parse(split[8], provider)
                     );
+                    coordSystem.DatumName = split[9];
 
                 }
                 else if (split.Length > 0 && split.Length < 9)
@@ -75,12 +84,14 @@ namespace CoordinateLib.CoordSystems
                         d_ap: double.Parse(split[3], provider),
                         d_fp: double.Parse(split[4], provider)
                     );
+                    coordSystem.DatumName = split[5];
                 }
             }
             #endregion
             #region parse sys params and calculate related
             if (!string.IsNullOrEmpty(gridSysParam))
             {
+                coordSystem.GridSysParamLine = gridSysParam;
                 var split = gridSysParam.Split(',');
                 if (split.Length > 0)
                 {

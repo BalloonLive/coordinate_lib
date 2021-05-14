@@ -20,8 +20,11 @@ namespace CoordinateLib.Converters
         private readonly Params.CoordUtmParams coordUtmParams;
         private readonly Params.CoordDatumParams coordDatumParamsWgs84;
 
-        CoordinatesData IConverter.Convert(double latitude, double longitude, double altitude = 0)
+        CoordinatesData IConverter.Convert(double latitude, double longitude, double altitude = 0, bool is_valid = true)
         {
+            if (!is_valid)
+                return new CoordinatesData { Zone = "", Line1 = "N00000000", Line2 = "E00000000" };
+
             var coords = Convert(latitude, longitude, altitude);
             return new CoordinatesData { Zone = $"{coords.utm_zone.zone}{coords.utm_zone.nzone}", Line1 = coords.easting, Line2 = coords.northing };
         }

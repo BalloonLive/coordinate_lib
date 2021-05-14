@@ -1,5 +1,6 @@
 ﻿using CoordinateLib.Enums;
 using System;
+using System.Globalization;
 
 namespace CoordinateLib.Core
 {
@@ -56,6 +57,25 @@ namespace CoordinateLib.Core
 
             // Temp
             public readonly double precision;
+
+            public override string ToString()
+            {
+                if (formula == COORD_DATTRANS_MA)
+                {
+                    return string.Format(CultureInfo.InvariantCulture, "{0:F},{1:F},{2:F},{3:F},{4:F}",
+                        -1.0 * dX, -1.0 * dY, -1.0 * dZ, -1.0 * d_a, -1.0 * d_f);
+                }
+                else if ( formula == COORD_DATTRANS_HELMERT)
+                {
+                    return string.Format(CultureInfo.InvariantCulture, "{0:F3},{1:F3},{2:F3},{3:F4},{4:F20},{5:F4},{6:F4},{7:F4},{8:F4}",
+                        -1.0 * dX, -1.0 * dY, -1.0 * dZ, -1.0 * d_a, -1.0 * d_f,
+                        rx * -1.0 * 3600.0 / Math.PI * 180.0, ry * -1.0 * 3600.0 / Math.PI * 180.0, rz * -1.0 * 3600.0 / Math.PI * 180.0, (s1 - 1) * 1e6);
+                }
+                else
+                {
+                    return "";
+                }
+            }
         }
 
         public class CoordDatumParams
@@ -138,6 +158,12 @@ namespace CoordinateLib.Core
             public readonly double fn = -100000;
             public readonly double long0 = -2;
             public readonly double lat0 = 49;
+
+            public override string ToString()
+            {
+                return string.Format(CultureInfo.InvariantCulture, "{0:F},{1:F},{2:F},{3:F},{4:F}",
+                        k0, long0, lat0, fe, fn);
+            }
         }
         public class CoordTmParams : CoordTmPartialParams
         {
