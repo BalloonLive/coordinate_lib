@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CoordSystems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Version>30.05.2019/ma</Version>
+  <Systems>
+    <CoordSystem>
+      <Name>Lat/Long WGS84</Name>
+      <GridSys>LATLONG</GridSys>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>DM WGS84</Name>
+      <GridSys>LATLONG</GridSys>
+      <Format>DM</Format>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>UTM WGS84</Name>
+      <GridSys>UTM</GridSys>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>UTM ED1950 (EUR-7)</Name>
+      <GridSys>UTM</GridSys>
+      <!--Parameters taken from Geotrans EUR-7-->
+      <!--<DatumParam>-84,-107,-120,-251,-0.00001419266264467492,ED1950</DatumParam>-->
+      <DatumParam>-102,-102,-129,-251,-0.00001419266264467492,-0.413,0.184,-0.385,2.4664,ED1950</DatumParam>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>UTM AGD1966</Name>
+      <GridSys>UTM</GridSys>
+      <!--Parameters taken from Nato list-->
+      <DatumParam>-133,-48,148,-23,-0.00000008116374765896,AGD1966</DatumParam>
+    </CoordSystem>
+    <!--<CoordSystem>
+      <Name>UTM EUR-D (Protugal and Spain)</Name>
+      <GridSys>UTM</GridSys>
+      <DatumParam>-84,-107,-120,-251,-0.00001419266264467492,ED1950</DatumParam>
+    </CoordSystem>-->
+    <CoordSystem>
+      <Name>Swiss Grid CH1903</Name>
+      <GridSys>SWISS</GridSys>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>British National OGB1936</Name>
+      <GridSys>BNG</GridSys>
+      <DatumParam>446.448,-125.157,542.06,573.6040,0.000011960023,0.150,0.2470,0.8421,-20.49,OGB-7</DatumParam>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>Swedish SWEREF 99 TM</Name>
+      <GridSys>USER_TM</GridSys>
+      <GridSysParam>0.9996,15,0,500000,0,SWEREF 99</GridSysParam>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>TWD67 TM2 Zone 121</Name>
+      <GridSys>USER_TM</GridSys>
+      <GridSysParam>0.9999,121,0,250000,0,TWD_121</GridSysParam>-->
+      <!-- Parameters taken from http://translate.googleusercontent.com/translate_c?depth=1&hl=zh-TW&ie=UTF8&langpair=zh-CN|en&rurl=www.google.com&u=http://wiki.osgeo.org/wiki/Taiwan_datums -->
+      <DatumParam>-685,-470,-237,-23,-0.000000081204,TWD67</DatumParam>                                       
+      <!--<DatumParam>-764.558,-359.515,-180.510,-23,-0.000000081204,7.968,3.5498,0.4063,18.2,TWD67</DatumParam>-->
+    </CoordSystem>
+    <CoordSystem>
+      <Name>TWD97 TM2 Zone 121</Name>
+      <GridSys>USER_TM</GridSys>
+      <GridSysParam>0.9999,121,0,250000,0,TWD_121</GridSysParam>
+    </CoordSystem>
+    <!--<CoordSystem>
+      <Name>BNG OGB-7 (GeoTrans)</Name>
+      <GridSys>BNG</GridSys>
+      <DatumParam>446,-99,544,573.6040,0.000011960023,0.945,0.261,0.435,-20.8927,OGB-7</DatumParam>
+    </CoordSystem>
+    <CoordSystem>
+      <Name>Custom OGB-7 (GeoTrans)</Name>
+      <GridSys>USER_TM</GridSys>
+      <DatumParam>446,-99,544,573.6040,0.000011960023,0.945,0.261,0.435,-20.8927,OGB-7</DatumParam>
+      <GridSysParam>0.9996012717,-2,49,400000,-100000,BNG</GridSysParam>
+    </CoordSystem>-->
+    <!--<CoordSystem>
+      <Name>BNG OGB-M</Name>
+      <GridSys>BNG</GridSys>
+      <DatumParam>375,-111,431,573.6040,0.000011960023,OGB-M</DatumParam>
+    </CoordSystem>-->
+    <CoordSystem>
+      <Name>Lithuania TM LKS94</Name>
+      <GridSys>USER_TM</GridSys>
+      <GridSysParam>0.9998,24,0,500000,0,Lithuania</GridSysParam>
+      <!-- Paramters taken from: http://crs.bkg.bund.de/crseu/crs/eu-description.php?crs_id=Y0xUX0xLUzk0KyUyRitMVF9UTQ== -->
+      <!-- https://en.wikipedia.org/wiki/European_Terrestrial_Reference_System_1989, thus used WGS84 -->
+    </CoordSystem>
+  </Systems>
+</CoordSystems>

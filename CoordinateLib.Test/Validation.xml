@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SysValidations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Systems>
+    <SysValidation>
+      <CoordSystemName>British National OGB1936</CoordSystemName>
+      <StimuliFile>data\bng_stimuli.dat</StimuliFile>
+      <ExpectedResponseFile>data\bng_ogb-7.dat</ExpectedResponseFile>
+      <ToleranceMax>3</ToleranceMax>
+      <!-- Some increased tolerance because Geotrans OGB-7 doesn't match ours -->
+      <ToleranceAvg>2</ToleranceAvg>
+    </SysValidation>
+    <!--<SysValidation>
+      <CoordSystemName>BNG OGB-M</CoordSystemName>
+      <StimuliFile>..\data\bng_stimuli.dat</StimuliFile>
+      <ExpectedResponseFile>..\data\bng_ogb-m.dat</ExpectedResponseFile>
+      <ToleranceMax>1.5</ToleranceMax>
+      <ToleranceAvg>1</ToleranceAvg>
+    </SysValidation>-->
+    <SysValidation>
+      <CoordSystemName>UTM WGS84</CoordSystemName>
+      <StimuliFile>data\utm_stimuli_all.dat</StimuliFile>
+      <ExpectedResponseFile>data\utm_wgs84.dat</ExpectedResponseFile>
+      <ToleranceMax>1.5</ToleranceMax>
+      <ToleranceAvg>1</ToleranceAvg>
+    </SysValidation>
+    <SysValidation>
+      <CoordSystemName>UTM ED1950 (EUR-7)</CoordSystemName>
+      <StimuliFile>data\utm_stimuli_europe.dat</StimuliFile>
+      <ExpectedResponseFile>data\utm_eur-7.dat</ExpectedResponseFile>
+      <ToleranceMax>1.5</ToleranceMax>
+      <ToleranceAvg>1</ToleranceAvg>
+    </SysValidation>
+    <SysValidation>
+      <CoordSystemName>UTM AGD1966</CoordSystemName>
+      <StimuliFile>data\australia_stimuli.dat</StimuliFile>
+      <ExpectedResponseFile>data\australia_agd1966.dat</ExpectedResponseFile>
+      <ToleranceMax>1.5</ToleranceMax>
+      <ToleranceAvg>1</ToleranceAvg>
+    </SysValidation>
+    <SysValidation>
+      <CoordSystemName>Swedish SWEREF 99 TM</CoordSystemName>
+      <StimuliFile>data\sweref_stimuli.dat</StimuliFile>
+      <ExpectedResponseFile>data\sweref_kontrollpunkter.dat</ExpectedResponseFile>
+      <ToleranceMax>1</ToleranceMax>
+      <ToleranceAvg>0.5</ToleranceAvg>
+    </SysValidation>
+    <SysValidation>
+      <CoordSystemName>TWD97 TM2 Zone 121</CoordSystemName>
+      <StimuliFile>data\twd_stimuli_taiwan.dat</StimuliFile>
+      <ExpectedResponseFile>data\twd_twd97_expected.dat</ExpectedResponseFile>
+      <ToleranceMax>1</ToleranceMax>
+      <ToleranceAvg>0.5</ToleranceAvg>
+    </SysValidation>
+    <SysValidation>
+      <CoordSystemName>TWD67 TM2 Zone 121</CoordSystemName>
+      <StimuliFile>data\twd_stimuli_taiwan.dat</StimuliFile>
+      <ExpectedResponseFile>data\twd_twd67_expected.dat</ExpectedResponseFile>
+      <ToleranceMax>2</ToleranceMax>
+      <ToleranceAvg>0.8</ToleranceAvg>
+    </SysValidation>
+    <SysValidation>
+      <CoordSystemName>Lithuania TM LKS94</CoordSystemName>
+      <StimuliFile>data\lithuania_stimuli.dat</StimuliFile>
+      <ExpectedResponseFile>data\lithuania_lks94.dat</ExpectedResponseFile>
+      <ToleranceMax>1.5</ToleranceMax>
+      <ToleranceAvg>1</ToleranceAvg>
+    </SysValidation>
+  </Systems>
+</SysValidations>
