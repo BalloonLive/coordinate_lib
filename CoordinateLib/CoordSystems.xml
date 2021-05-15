@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <CoordSystems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Version>14.05.2021/jv</Version>
+  <Version>15.05.2021/ma</Version>
   <Systems>
     <CoordSystem>
-      <Name>Lat/Long WGS84</Name>
+      <Name>Lat/Long (Decimal) WGS84</Name>
       <GridSys>LATLONG</GridSys>
     </CoordSystem>
     <CoordSystem>
-      <Name>DM WGS84</Name>
+      <Name>Lat/Long (DMS) WGS84</Name>
       <GridSys>LATLONG</GridSys>
       <Format>DM</Format>
     </CoordSystem>
@@ -16,7 +16,7 @@
       <GridSys>UTM</GridSys>
     </CoordSystem>
     <CoordSystem>
-      <Name>UTM ED1950 (EUR-7)</Name>
+      <Name>UTM ED1950</Name>
       <GridSys>UTM</GridSys>
       <!--Parameters taken from Geotrans EUR-7-->
       <!--<DatumParam>-84,-107,-120,-251,-0.00001419266264467492,ED1950</DatumParam>-->
