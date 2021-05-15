@@ -16,7 +16,7 @@ namespace CoordinateLib.CoordSystems
     {
         public CoordSystemDirectory Parse(string fileName = "CoordSystems.xml")
         {
-            FileStream fs = new FileStream(fileName, FileMode.Open);
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             return Parse(fs);
         }
 
