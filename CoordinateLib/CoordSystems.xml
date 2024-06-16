@@ -22,6 +22,14 @@
       <!--<DatumParam>-84,-107,-120,-251,-0.00001419266264467492,ED1950</DatumParam>-->
       <DatumParam>-102,-102,-129,-251,-0.00001419266264467492,-0.413,0.184,-0.385,2.4664,ED1950</DatumParam>
     </CoordSystem>
+	<CoordSystem>
+      <Name>UTM ETRS89</Name>
+	  <GridSys>UTM</GridSys>
+	  <!--Parameters taken from
+	  https://english.defensie.nl/downloads/circulars/2013/08/23/transformation-parameters-between-itrs-wgs84-and-etrs89
+	  Date: 1989. see trafoparsitrs_v2013en.xls -->
+	  <DatumParam>-0.023,-0.036,0.068,0,0,-0.00011,-0.00057,0.00071,-0.0043,ETRS89</DatumParam>
+	</CoordSystem>	  
     <CoordSystem>
       <Name>UTM AGD1966</Name>
       <GridSys>UTM</GridSys>
@@ -83,13 +91,5 @@
       <!-- Paramters taken from: http://crs.bkg.bund.de/crseu/crs/eu-description.php?crs_id=Y0xUX0xLUzk0KyUyRitMVF9UTQ== -->
       <!-- https://en.wikipedia.org/wiki/European_Terrestrial_Reference_System_1989, thus used WGS84 -->
     </CoordSystem>
-	<CoordSystem>
-	  <Name>UTM ETRS89</Name>
-	  <GridSys>UTM</GridSys>
-	  <!--Parameters taken from
-	  https://english.defensie.nl/downloads/circulars/2013/08/23/transformation-parameters-between-itrs-wgs84-and-etrs89
-	  Date: 1989. see trafoparsitrs_v2013en.xls -->
-	  <DatumParam>-0.023,-0.036,0.068,0,0,-0.00011,-0.00057,0.00071,-0.0043,ETRS89</DatumParam>
-	</CoordSystem>
   </Systems>
 </CoordSystems>
