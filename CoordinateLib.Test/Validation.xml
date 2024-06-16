@@ -24,7 +24,7 @@
       <ToleranceAvg>1</ToleranceAvg>
     </SysValidation>
     <SysValidation>
-      <CoordSystemName>UTM ED1950 (EUR-7)</CoordSystemName>
+      <CoordSystemName>UTM ED1950</CoordSystemName>
       <StimuliFile>data\utm_stimuli_europe.dat</StimuliFile>
       <ExpectedResponseFile>data\utm_eur-7.dat</ExpectedResponseFile>
       <ToleranceMax>1.5</ToleranceMax>
@@ -65,5 +65,13 @@
       <ToleranceMax>1.5</ToleranceMax>
       <ToleranceAvg>1</ToleranceAvg>
     </SysValidation>
+	<SysValidation>
+	  <CoordSystemName>UTM ETRS89</CoordSystemName>
+	  <!-- Converted using https://twcc.fr/en/ -->
+	  <StimuliFile>data\utm_stimuli_europe.dat</StimuliFile>
+	  <ExpectedResponseFile>data\utm_etrs89.dat</ExpectedResponseFile>
+	  <ToleranceMax>1.5</ToleranceMax>
+	  <ToleranceAvg>1</ToleranceAvg>
+	</SysValidation>	  
   </Systems>
 </SysValidations>

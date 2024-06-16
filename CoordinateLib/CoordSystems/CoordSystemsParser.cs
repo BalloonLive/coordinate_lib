@@ -58,6 +58,7 @@ namespace CoordinateLib.CoordSystems
                 if (split.Length >= 10)
                 {
                     //double dXp, double dYp, double dZp, double d_ap, double d_fp, double rxp, double ryp, double rzp, double s1p
+                    //       [m]         [m]         [m]           [m]                     ["]         ["]         ["]         [ppm]
                     coordSystem.CoordDattransParams = new CoordDattransParams
                     (
                         dXp: double.Parse(split[0], provider),
